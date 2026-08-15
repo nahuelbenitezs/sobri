@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0b12">
+<title>Desafío Ígneo 🔥</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<button id="muteBtn" aria-label="sonido">🔊</button>
+<div id="flash"></div>
+<div id="toast"></div>
+
+<!-- PANTALLA INICIO -->
+<section id="screen-start" class="screen active">
+  <div class="logo-fire">🔥</div>
+  <h1 class="pixel title-fire">DESAFÍO<br>ÍGNEO</h1>
+  <p class="subtitle">El Gimnasio de Fuego te espera, entrenador.</p>
+  <input id="nameInput" maxlength="14" placeholder="Nombre del entrenador" autocomplete="off">
+  <button id="startBtn" class="fire-btn">▶ INICIAR DESAFÍO ÍGNEO</button>
+  <p class="hint">Subí el volumen 🔊 · Un regalo hecho con ❤️ y 🔥</p>
+</section>
+
+<!-- INTRO CINEMÁTICA -->
+<section id="screen-intro" class="screen">
+  <img id="introChar" class="sprite big" alt="Charizard">
+  <div class="log"><span id="introMsg"></span></div>
+  <button id="introGo" class="fire-btn hidden" style="margin-top:18px">⚔️ ¡A BATALLAR!</button>
+</section>
+
+<!-- BATALLA -->
+<section id="screen-battle" class="screen">
+  <div class="battle">
+    <div id="field">
+      <div class="mon-enemy" id="eWrap">
+        <div class="hpbox" id="eHP">
+          <div class="mon-name"><span id="eName"></span><small id="eTypes"></small></div>
+          <div class="hpbar"><div class="hpfill"></div></div><span class="hpnum"></span>
+        </div>
+        <img id="eSprite" class="sprite" style="margin:8px 6px 0 auto" alt="jefe">
+      </div>
+      <div class="mon-player" id="pWrap">
+        <img id="pSprite" class="sprite" alt="Charizard">
+        <div class="hpbox" id="pHP" style="margin-top:6px">
+          <div class="mon-name">CHARIZARD <small>🔥 Fuego · Volador</small></div>
+          <div class="hpbar"><div class="hpfill"></div></div><span class="hpnum"></span>
+        </div>
+      </div>
+      <div id="fx"></div>
+    </div>
+    <div class="log"><span id="logText"></span></div>
+    <div id="moves" class="moves hidden"></div>
+  </div>
+</section>
+
+<!-- VICTORIA -->
+<section id="screen-victory" class="screen">
+  <h1 class="pixel title-fire">¡VICTORIA!</h1>
+  <img id="vChar" class="sprite big" alt="Charizard">
+  <p id="vText"></p>
+  <p class="subtitle">Demostraste ser un verdadero MAESTRO DEL FUEGO 🔥</p>
+  <button id="claimBtn" class="fire-btn">🏆 CREAR MI TARJETA LEGENDARIA</button>
+</section>
+
+<!-- TARJETA VIP -->
+<section id="screen-card" class="screen">
+  <h2 class="pixel card-title">FORJA TU TARJETA VIP</h2>
+  <div id="cardPreview" class="tcard frame-lava">
+    <div class="tcard-inner">
+      <div class="tcard-head"><span id="cardName" class="pixel">ENTRENADOR</span><span class="badge pixel">MAESTRO DEL FUEGO</span></div>
+      <div id="cardTeam" class="tcard-team"></div>
+      <div class="tcard-foot">GIMNASIO DE FUEGO · <span id="cardDate"></span> · Nº <span id="cardId"></span></div>
+    </div>
+  </div>
+  <div class="lab">
+    <label class="lbl">Apodo de entrenador</label>
+    <input id="nickInput" maxlength="14" placeholder="Tu apodo" style="width:100%;margin:0">
+    <label class="lbl">Marco de la tarjeta</label>
+    <div class="frames">
+      <button class="frame-btn pixel sel" data-frame="lava">🌋 LAVA</button>
+      <button class="frame-btn pixel" data-frame="dragon">🐉 DRAGÓN</button>
+      <button class="frame-btn pixel" data-frame="azul">🔵 FUEGO AZUL</button>
+    </div>
+    <label class="lbl">Elige tu equipo de fuego (6)</label>
+    <div id="teamSlots" class="team-slots"></div>
+    <div id="gallery" class="gallery"></div>
+    <button id="dlBtn" class="fire-btn">⬇️ DESCARGAR TARJETA</button>
+    <div class="row">
+      <button id="againBtn" class="ghost-btn pixel">🔁 REVANCHA</button>
+      <button id="shareBtn" class="ghost-btn pixel">🔗 COMPARTIR JUEGO</button>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANTE: el orden de los scripts importa -->
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/card.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
